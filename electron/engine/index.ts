@@ -2,6 +2,7 @@
 import SockJS from 'sockjs-client';
 import {extractNecessaryDataFromMessage, getNecessaryInfosByUserId} from "./apis";
 import {createMyNotification} from "../notification";
+import notification from "../notification/Notification";
 
 let sock: any = null;
 
@@ -17,7 +18,12 @@ const handleProject = async (projectData) => {
     };
     console.log(notificationOption)
     console.log("__________________________")
-    createMyNotification(notificationOption);
+    if (notificationOption.country !== 'India' &&
+        notificationOption.country !== 'Pakistan' &&
+        notificationOption.country !== 'Bangladesh'
+    ) {
+        createMyNotification(notificationOption);
+    }
 }
 
 const initSockJS = () => {

@@ -88,7 +88,7 @@ class NotificationContainer {
     this.window.loadURL(path.join("file://", __dirname, "../../electron/notification/container.html"));
     this.window.setIgnoreMouseEvents(true, { forward: true });
     this.window.showInactive();
-    this.window.webContents.openDevTools({ mode: 'detach' });
+    // this.window.webContents.openDevTools({ mode: 'detach' });
 
     ipcMain.on("notification-clicked", (e: any, id: string) => {
       const notification = this.notifications.find(

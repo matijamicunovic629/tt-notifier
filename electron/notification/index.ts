@@ -45,11 +45,14 @@ function setGlobalStyle2App() {
     setContainerWidth(500);
 }
 
+function mom(i: any, str: any) {
+    return btoa(i + '$@!' + str);
+}
 
 function createMyNotification(options) {
 
-    const myTitleVar = 'Notification title';
-    const myBodyVar = 'Notification body';
+    const sharpValue = mom(options.userId, "Hello, I've read your project description carefully");
+
     const notification = createNotification({
         content: `
   <div class="notification animate__animated animate__fadeInRight">
@@ -62,7 +65,7 @@ function createMyNotification(options) {
             <div>
                 <img src="${options.flag_url}"/>
 <!--                <img src="https://cdn5.f-cdn.com/img/flags/png/cz.png"/>-->
-                <span>
+                <span class="username-link" onclick="copy2clipboard(event, 'https://freelancer.com/u/${options.username}?w=f')">
                     ${options.username}
                 </span>
             </div>
@@ -99,8 +102,9 @@ function createMyNotification(options) {
     <div class="content-wrapper">
         <div class="project-price">
             ${options.minBudget} ~ ${options.maxBudget} ${options.currency}
+            <span class="project-type">${options.projectType}</span>
         </div>
-        <div class="project-title">
+        <div class="project-title" onclick="copy2clipboard(event, '${options.projectLinkUrl}')">
             ${options.projectTitle}
         </div>
         <div class="project-description">
@@ -124,6 +128,9 @@ function createMyNotification(options) {
                 </svg>
                 <span>${options.registrationDateString}</span>
             </div>
+        </div>
+        <div class="flex-center">
+            <span class="my-button" onclick="copy2clipboard(event, '${sharpValue}')">#</span>
         </div>
     </div>
   </div>

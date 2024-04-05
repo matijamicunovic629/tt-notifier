@@ -57,6 +57,7 @@ export const getNecessaryInfosByUserId = async (userId: number) => {
     const registrationDate = new Date(userProfile.registration_date * 1000);
 
     return {
+        userId,
         avatar: 'https:' + userProfile.avatar_cdn,
         city: userProfile.location.city,
         flag_url: 'https:' + userProfile.location.country.flag_url_cdn,

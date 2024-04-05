@@ -102,11 +102,37 @@
         .project-price {
             font-size: 22px;
             font-weight: bolder;
+            position: relative;
+        }
+
+        .project-price .project-type {
+            border: 1px solid green;
+            color: green;
+            padding: 3px 10px;
+            position: absolute;
+            right: 30px;
+            font-size: 1rem;
+            border-radius: 12px;
+            top: 2px;
+        }
+
+        .username-link:hover, .project-title:hover {
+            color: red;
         }
 
         .project-title {
             font-weight: bolder;
             padding: 5px 0px;
+        }
+
+        .my-button {
+            background: aquamarine;
+            padding: 6px 38px;
+            border-radius: 20px;
+            margin-left: 8px;        }
+
+        .my-button:hover {
+            background: #41b68c;
         }
 
         .project-description {
@@ -135,6 +161,7 @@
 
         .review-and-date-wrapper {
             position: relative;
+            height: 24px;
         }
 
         .reviews-wrapper {
@@ -157,6 +184,15 @@
 
     </style>
     <script>
+
+        const { clipboard } = require('electron');
+
+        function copy2clipboard(event, text) {
+            event.preventDefault();
+            event.stopPropagation();
+            clipboard.writeText(text)
+        }
+
         const ipc = require('electron').ipcRenderer;
 
         ipc.on('notification-add', (e, html) => {
