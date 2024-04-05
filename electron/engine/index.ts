@@ -5,7 +5,11 @@ let sock = null;
 
 const initSockJS = () => {
 
-    const requestArray = JSON.parse('[{"channel":"auth","body":{"hash2":"YHYZMEcVNy1K7ZtGFyEqv3v96pk1vRkAGP7R41QIeGk=","user_id":75346685}},{"channel":"onlineoffline","body":{"route":"getsub","users":[75346685,72847638]}},{"channel":"channels","body":{"channels":[15,704,913,6,106,320,77,20,335,323,7,9,669,305,500,3,13,759,68,17]}},{"channel":"channels","body":{"channels":["channel_resource_5_75259","channel_resource_5_1365","channel_resource_5_744"]}},{"channel":"onlineoffline","body":{"route":"getsub","users":[75346685,72847638]}},{"channel":"channels","body":{"channels":[15,704,913,6,106,320,77,20,335,323,7,9,669,305,500,3,13,759,68,17]}},{"channel":"onlineoffline","body":{"route":"getsub","users":[75346685,72847638]}}]');
+    const requestArray = [
+        `{"channel":"auth","body":{"hash2":"YHYZMEcVNy1K7ZtGFyEqv3v96pk1vRkAGP7R41QIeGk=","user_id":75346685}}`,
+        `{"channel":"onlineoffline","body":{"route":"getsub","users":[]}}`,
+        `{"channel":"channels","body":{"channels":[335,9,669,3,69,704,1092,237,113,598,1315,343,90,2372,2376,500,759,979,1126,535,22,1402,292,995,13,1189,1212,7,39,20,158,119,95,913,197,59,58,44,15,2047,695,116,1935,2397,287,31,30,564,2791,2836,147,36,55,712,318]}}`
+    ];
 
     sock = new SockJS("https://notifications.freelancer.com");
 
@@ -13,7 +17,7 @@ const initSockJS = () => {
         console.log("socket onOpen", e);
 
         for(let i = 0; i < requestArray.length; i ++) {
-            sock.send(JSON.stringify(requestArray[i]));
+            sock.send(requestArray[i]);
         }
     };
 
