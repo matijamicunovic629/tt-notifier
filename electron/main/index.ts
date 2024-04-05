@@ -126,12 +126,6 @@ app.whenReady().then(() => {
 
   // ---------- set notification settings --------------
   setGlobalStyle2App();
-  createMyNotification({});
-  setTimeout(() => {
-    createMyNotification({});
-
-  }, 2000);
-
 })
 
 app.on('window-all-closed', () => {

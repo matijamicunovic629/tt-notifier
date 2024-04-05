@@ -1,6 +1,7 @@
 // @ts-ignore
 import SockJS from 'sockjs-client';
 import {extractNecessaryDataFromMessage, getNecessaryInfosByUserId} from "./apis";
+import {createMyNotification} from "../notification";
 
 let sock: any = null;
 
@@ -10,12 +11,13 @@ const handleProject = async (projectData) => {
     const data = await getNecessaryInfosByUserId(userId);
     const exractedData = extractNecessaryDataFromMessage(projectData);
     console.log("__________________________")
-    console.log({
+    const notificationOption = {
         ...data,
         ...exractedData
-    })
+    };
+    console.log(notificationOption)
     console.log("__________________________")
-
+    createMyNotification(notificationOption);
 }
 
 const initSockJS = () => {

@@ -35,32 +35,38 @@ export const getNecessaryInfosByUserId = async (userId: number) => {
     let minReviewAmount = 100000000, maxReviewAmount = 0;
     if (userReviewsResponse.reviews) {
         userReviewsResponse.reviews.forEach(review => {
-            if (review.currency.sign === '€' || review.currency.sign === '$') {
+            if (review.currency.sign === '€' ||
+                review.currency.sign === '$' ||
+                review.currency.sign === '£'
+            ) {
                 minReviewAmount = Math.min(review.paid_amount, minReviewAmount);
                 maxReviewAmount = Math.max(review.paid_amount, maxReviewAmount);
             }
         });
     }
 
-    let reviewText = userProfile.employer_reputation.entire_history.reviews;
+    let reviewText = userProfile.employer_reputation.entire_history.reviews ? userProfile.employer_reputation.entire_history.reviews : "No Reviews";
     if (minReviewAmount != 100000000 && maxReviewAmount != 0) {
         if (minReviewAmount === maxReviewAmount) {
             reviewText += `(${minReviewAmount})`;
         } else {
-            reviewText += `(${minReviewAmount} - ${maxReviewAmount})`;
+            reviewText += `(${minReviewAmount}$ - ${maxReviewAmount}$)`;
         }
     }
+
+    const registrationDate = new Date(userProfile.registration_date * 1000);
 
     return {
         avatar: 'https:' + userProfile.avatar_cdn,
         city: userProfile.location.city,
-        flag_url: baseURL + userProfile.location.country.flag_url,
+        flag_url: 'https:' + userProfile.location.country.flag_url_cdn,
         country: userProfile.location.country.name,
         currency: userProfile.primary_currency.code,
         username: userProfile.username,
-        reviewCount: userProfile.employer_reputation.entire_history.reviews,
+        reviewCount: userProfile.employer_reputation.entire_history.reviews ? userProfile.employer_reputation.entire_history.reviews : 0,
         reviewText,
-        registrationDate: new Date(userProfile.registration_date * 1000),
+        registrationDate,
+        registrationDateString: `${registrationDate.getFullYear()}/${(registrationDate.getMonth() + 1)}/${registrationDate.getDate()}`,
         custom_charge_verified: userProfile.status.custom_charge_verified,
         deposit_made: userProfile.status.deposit_made,
         email_verified: userProfile.status.email_verified,
