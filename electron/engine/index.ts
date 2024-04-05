@@ -1,7 +1,22 @@
+// @ts-ignore
 import SockJS from 'sockjs-client';
+import {extractNecessaryDataFromMessage, getNecessaryInfosByUserId} from "./apis";
 
-let sock = null;
+let sock: any = null;
 
+const handleProject = async (projectData) => {
+
+    const userId = projectData.userId;
+    const data = await getNecessaryInfosByUserId(userId);
+    const exractedData = extractNecessaryDataFromMessage(projectData);
+    console.log("__________________________")
+    console.log({
+        ...data,
+        ...exractedData
+    })
+    console.log("__________________________")
+
+}
 
 const initSockJS = () => {
 
@@ -27,6 +42,16 @@ const initSockJS = () => {
 
     sock.onmessage = (e) => {
         console.log("onMessage", e);
+        try {
+
+            const message = JSON.parse(e.data);
+            if (message.channel === 'user' && message.body.type === 'project') {
+                handleProject(message.body.data);
+            }
+
+        } catch(e) {
+
+        }
     };
 
     sock.onerror = (e) => {

@@ -42,7 +42,7 @@ function setGlobalStyle2App() {
     // OPTIONAL: Set optional container width.
     // DEFAULT: 300
     // setContainerWidth(350);
-    setContainerWidth(850);
+    setContainerWidth(500);
 }
 
 
@@ -52,13 +52,82 @@ function createMyNotification(options) {
     const myBodyVar = 'Notification body';
     const notification = createNotification({
         content: `
-  <div class="notification animate__animated animate__fadeInUp">
-    <div class="logo">
-        <img src="../../src/assets/logo-electron.svg"/>   
+  <div class="notification animate__animated animate__fadeInRight">
+    <div class="person-info">
+        <div class="photo-wrapper flex-center">
+            <img src="https://cdn2.f-cdn.com/ppic/107240464/logo/18902279/QzYjO/profile_logo_.jpg">
+        </div>
+        <div class="country-wrapper flex-center">
+            <div>
+                <img src="https://cdn5.f-cdn.com/img/flags/png/cz.png"/>
+                <span>
+                    @vscoluciones
+                </span>
+            </div>
+        </div>
+        <div class="cred-info flex-center">
+                <svg class="Icon-image" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                    <path d="M20.447 2.106c-.34-.17-.744-.133-1.047.095L16 4.75 12.6 2.2c-.355-.266-.844-.266-1.2 0L8 4.75 4.6 2.2c-.304-.227-.708-.264-1.047-.094C3.213 2.276 3 2.622 3 3v9c0 5.524 8.2 9.72 8.55 9.894l.45.227.45-.226C12.8 21.72 21 17.524 21 12V3c0-.378-.214-.724-.553-.894zM15 10h-3.5c-.275 0-.5.225-.5.5 0 .276.225.5.5.5h1c1.38 0 2.5 1.122 2.5 2.5 0 1.208-.86 2.22-2 2.45V17h-2v-1H9v-2h3.5c.276 0 .5-.224.5-.5 0-.275-.224-.5-.5-.5h-1C10.122 13 9 11.878 9 10.5c0-1.206.86-2.217 2-2.45V7h2v1h2v2z"></path>
+                </svg>
+                <svg class="Icon-image" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                    <path d="M12 10.823l8.965-5.563C20.677 5.1 20.352 5 20 5H4c-.352 0-.678.1-.965.26L12 10.823z"></path>
+                    <path d="M12.527 12.85c-.16.1-.344.15-.527.15s-.366-.05-.527-.15l-9.47-5.877C2.003 6.983 2 6.99 2 7v9c0 1.1.897 2 2 2h16c1.103 0 2-.9 2-2V7c0-.01-.003-.02-.003-.028l-9.47 5.877z"></path>
+                </svg>
+                <svg class="Icon-image" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                    <path d="M12.002 12.006c2.206 0 4-1.795 4-4s-1.794-4-4-4-4 1.795-4 4 1.795 4 4 4zM12.002 13.006c-4.71 0-8 2.467-8 6v1h16v-1c0-3.533-3.29-6-8-6z"></path>
+                </svg>
+                <svg class="Icon-image" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                    <path d="M15,21h5a1,1,0,0,0,1-1V16a1,1,0,0,0-1-1H16a1,1,0,0,0-1,1v1a6.91,6.91,0,0,1-7-7H9a1,1,0,0,0,1-1V5A1,1,0,0,0,9,4H5A1,1,0,0,0,4,5v5A11,11,0,0,0,15,21Z"></path>
+                </svg>
+                <svg class="Icon-image" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                    <path d="M2 18c0 1.104.897 2 2 2h16c1.104 0 2-.896 2-2v-8H2v8zm13-6h4v2h-4v-2zM5 12h7v2H5v-2zm0 3h5v2H5v-2zM20 4H4C2.897 4 2 4.9 2 6v2h20V6c0-1.102-.896-2-2-2z"></path>
+                </svg>
+        </div>
+        <div class="status flex-center">
+            <div class="flex-center">
+                <div class="circle"></div>
+                <span class="status text">I'm online</span>
+            </div>
+        </div>
+        <div class="location-info flex-center">
+            <img src="https://www.f-cdn.com/assets/compat/en/assets/icons/ui-pin-location.svg"/>
+            <span>Prague</span>
+        </div>
     </div>
     <div class="content-wrapper">
-      <h1>${myTitleVar}</h1>
-      <p>${myBodyVar}</p>
+        <div class="project-price">
+            250 ~ 750 USD
+        </div>
+        <div class="project-title">
+            Crypto Prices Real-Time API
+        </div>
+        <div class="project-description">
+            I am looking for an experienced developer to seamlessly integrate real-time cryptocurrency price data into our React-based application, with a strong emphasis on also including comprehensive historical data for analysis and charting purposes. This project will serve as a crucial component of our application, empowering our users with the most current market information alongside deep historical insights to guide their decision-making processes.
+        </div>
+        <div class="tags-wrapper">
+            <div class="tag">
+                Python
+            </div>
+            <div class="tag">
+                Django
+            </div>
+            <div class="tag">
+                Software Architecture
+            </div>
+
+        </div>
+        <div class="review-and-date-wrapper">
+            <div class="reviews-wrapper flex flex-center">
+                <svg class="review-svg" width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M15 12h2v-2h-2v2zm-4 0h2v-2h-2v2zm-4 0h2v-2H7v2zm15-9H2.01L2 23l4-4h16V3z" fill-rule="evenodd"></path></svg>
+                <span>23 (30$ - 1500$)<span>
+            </div>
+            <div class="date-wrapper flex-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                    <path d="M12,2 C6.5,2 2,6.5 2,12 C2,17.5 6.5,22 12,22 C17.5,22 22,17.5 22,12 C22,6.5 17.5,2 12,2 Z M16.2,16.2 L11,13 L11,7 L12.5,7 L12.5,12.2 L17,14.9 L16.2,16.2 Z" fill-rule="nonzero"></path>
+                </svg>
+                <span>2016/5/3</span>
+            </div>
+        </div>
     </div>
   </div>
 `,

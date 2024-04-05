@@ -67,14 +67,14 @@ class NotificationContainer {
     options.height = displayHeight;
     options.width = NotificationContainer.CONTAINER_WIDTH;
     options.alwaysOnTop = true;
-    // options.skipTaskbar = true;
-    // options.resizable = false;
-    // options.minimizable = false;
-    // options.fullscreenable = false;
-    // options.focusable = false;
-    // options.show = false;
-    // options.frame = false;
-    // options.transparent = true;
+    options.skipTaskbar = true;
+    options.resizable = false;
+    options.minimizable = false;
+    options.fullscreenable = false;
+    options.focusable = false;
+    options.show = false;
+    options.frame = false;
+    options.transparent = true;
     options.x = displayWidth - NotificationContainer.CONTAINER_WIDTH;
     options.y = 0;
     options.webPreferences = {
@@ -84,14 +84,13 @@ class NotificationContainer {
        // (all links are opened in a real browser window), we can enable this.
 
     this.window = new BrowserWindow(options);
-    this.window.webContents.openDevTools()
+    // this.window.webContents.openDevTools()
     this.window.setVisibleOnAllWorkspaces(true);
     this.window.loadURL(path.join("file://", __dirname, "../../electron/notification/container.html"));
-    // this.window.setIgnoreMouseEvents(true, { forward: true });
-    // this.window.showInactive();
+    this.window.setIgnoreMouseEvents(true, { forward: true });
+    this.window.showInactive();
     // this.window.webContents.openDevTools({ mode: 'detach' });
 
-/*
     ipcMain.on("notification-clicked", (e: any, id: string) => {
       const notification = this.notifications.find(
         notification => notification.id == id
@@ -101,7 +100,6 @@ class NotificationContainer {
         notification.emit("click");
       }
     });
-*/
 
     ipcMain.on("make-clickable", (e: any) => {
       this.window && this.window.setIgnoreMouseEvents(false);
