@@ -6,6 +6,34 @@ import notification from "../notification/Notification";
 
 let sock: any = null;
 
+const checkProject = (notificationOption) => {
+
+    // country filter
+    if (notificationOption.country === 'India' &&
+        notificationOption.country === 'Pakistan' &&
+        notificationOption.country === 'Bangladesh')
+        return false;
+
+    // verified filter
+    if (!notificationOption.payment_verified ||
+        !notificationOption.deposit_made)
+        return false;
+
+    // price filter
+    if (notificationOption.projectType === 'hourly' &&
+        notificationOption.maxBudget > 0 &&
+        notificationOption.maxBudget < 15)
+        return false;
+
+    if (notificationOption.projectType === 'fixed' &&
+        notificationOption.maxBudget < 150
+    )
+        return false;
+
+
+    return true;
+}
+
 const handleProject = async (projectData) => {
 
     const userId = projectData.userId;
@@ -18,10 +46,7 @@ const handleProject = async (projectData) => {
     };
     console.log(notificationOption)
     console.log("__________________________")
-    if (notificationOption.country !== 'India' &&
-        notificationOption.country !== 'Pakistan' &&
-        notificationOption.country !== 'Bangladesh'
-    ) {
+    if (checkProject(notificationOption)) {
         createMyNotification(notificationOption);
     }
 }

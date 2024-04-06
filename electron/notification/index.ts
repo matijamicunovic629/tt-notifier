@@ -135,7 +135,7 @@ function createMyNotification(options) {
     </div>
   </div>
 `,
-        // timeout: 3000,
+        timeout: 20000,
     });
 
 
