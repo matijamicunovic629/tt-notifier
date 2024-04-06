@@ -9,8 +9,8 @@ let sock: any = null;
 const checkProject = (notificationOption) => {
 
     // country filter
-    if (notificationOption.country === 'India' &&
-        notificationOption.country === 'Pakistan' &&
+    if (notificationOption.country === 'India' ||
+        notificationOption.country === 'Pakistan' ||
         notificationOption.country === 'Bangladesh')
         return false;
 
@@ -30,6 +30,9 @@ const checkProject = (notificationOption) => {
     )
         return false;
 
+    // review filter
+    if (notificationOption.reviewCount > 50)
+        return false;
 
     return true;
 }
