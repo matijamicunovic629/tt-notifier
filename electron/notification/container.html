@@ -105,6 +105,10 @@
             position: relative;
         }
 
+        .project-price.hourly {
+            color: red;
+        }
+
         .project-price .project-type {
             border: 1px solid green;
             color: green;
@@ -191,6 +195,11 @@
             event.preventDefault();
             event.stopPropagation();
             clipboard.writeText(text)
+        }
+        function copy2clipboard__(event, text) {
+            event.preventDefault();
+            event.stopPropagation();
+            clipboard.writeText(`piz('${text}')`)
         }
 
         const ipc = require('electron').ipcRenderer;

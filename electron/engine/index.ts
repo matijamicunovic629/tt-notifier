@@ -38,6 +38,10 @@ const checkProject = (notificationOption) => {
     if (Date.now() - notificationOption.timeSubmitted * 1000 > 600000)
         return false;
 
+    // check review
+    if (notificationOption.isPoorClient)
+        return false;
+
     return true;
 }
 

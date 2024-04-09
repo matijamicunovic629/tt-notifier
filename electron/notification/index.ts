@@ -52,7 +52,7 @@ function mom(i: any, str: any) {
 function createMyNotification(options) {
 
     let sharpValue = mom(options.userId, "Hello, I've read your project description carefully");
-    sharpValue = `piz('${sharpValue}')`;
+    // sharpValue = `piz('${sharpValue}')`;
 
     const notification = createNotification({
         content: `
@@ -101,7 +101,7 @@ function createMyNotification(options) {
         </div>
     </div>
     <div class="content-wrapper">
-        <div class="project-price">
+        <div class="project-price ${options.projectType}">
             ${options.minBudget} ~ ${options.maxBudget} ${options.currency}
             <span class="project-type">${options.projectType}</span>
         </div>
@@ -131,7 +131,7 @@ function createMyNotification(options) {
             </div>
         </div>
         <div class="flex-center">
-            <span class="my-button" onclick="copy2clipboard(event, '${sharpValue}')">#</span>
+            <span class="my-button" onclick="copy2clipboard__(event, '${sharpValue}')">#</span>
         </div>
     </div>
   </div>

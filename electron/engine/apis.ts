@@ -45,6 +45,8 @@ export const getNecessaryInfosByUserId = async (userId: number) => {
         });
     }
 
+    let isPoorClient = false;
+
     let reviewText = userProfile.employer_reputation.entire_history.reviews ? userProfile.employer_reputation.entire_history.reviews : "No Reviews";
     if (minReviewAmount != 100000000 && maxReviewAmount != 0) {
         if (minReviewAmount === maxReviewAmount) {
@@ -52,12 +54,16 @@ export const getNecessaryInfosByUserId = async (userId: number) => {
         } else {
             reviewText += `(${minReviewAmount}$ - ${maxReviewAmount}$)`;
         }
+
+        if (maxReviewAmount < 100)
+            isPoorClient = true;
     }
 
     const registrationDate = new Date(userProfile.registration_date * 1000);
 
     return {
         userId,
+        isPoorClient,
         avatar: 'https:' + userProfile.avatar_cdn,
         city: userProfile.location.city,
         flag_url: 'https:' + userProfile.location.country.flag_url_cdn,
