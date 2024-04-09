@@ -59,7 +59,7 @@ const initSockJS = () => {
     const requestArray = [
         `{"channel":"auth","body":{"hash2":"YHYZMEcVNy1K7ZtGFyEqv3v96pk1vRkAGP7R41QIeGk=","user_id":75346685}}`,
         `{"channel":"onlineoffline","body":{"route":"getsub","users":[]}}`,
-        `{"channel":"channels","body":{"channels":[335,9,669,3,69,704,1092,237,113,598,1315,343,90,2372,2376,500,759,979,1126,535,22,1402,292,995,13,1189,1212,7,39,20,158,119,95,913,197,59,58,44,15,2047,695,116,1935,2397,287,31,30,564,2791,2836,147,36,55,712,318]}}`
+        `{"channel":"channels","body":{"channels":[3,6,7,9,13,15,51,59,77,92,106,113,116,147,237,335,343,500,598,669,704,759,979,1092,1119,1126,2370,2372,2376,2397,2630,2631,2632]}}`
     ];
 
     sock = new SockJS("https://notifications.freelancer.com");
