@@ -34,6 +34,10 @@ const checkProject = (notificationOption) => {
     if (notificationOption.reviewCount > 50)
         return false;
 
+    // check submitted time
+    if (Date.now() - notificationOption.timeSubmitted * 1000 > 600000)
+        return false;
+
     return true;
 }
 

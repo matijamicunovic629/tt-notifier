@@ -90,5 +90,6 @@ export const extractNecessaryDataFromMessage = (projectData) => {
         maxBudget: projectData.maxbudget,
         minBudget: projectData.minbudget,
         projectType: projectData.type,
+        timeSubmitted: projectData.time_submitted
     }
 }

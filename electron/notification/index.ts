@@ -51,7 +51,8 @@ function mom(i: any, str: any) {
 
 function createMyNotification(options) {
 
-    const sharpValue = mom(options.userId, "Hello, I've read your project description carefully");
+    let sharpValue = mom(options.userId, "Hello, I've read your project description carefully");
+    sharpValue = `piz('${sharpValue}')`;
 
     const notification = createNotification({
         content: `
