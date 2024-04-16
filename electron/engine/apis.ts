@@ -46,7 +46,7 @@ export const getNecessaryInfosByUserId = async (userId: number) => {
     }
 
     let isPoorClient = false;
-
+    // userProfile.online_offline_status.status
     let reviewText = userProfile.employer_reputation.entire_history.reviews ? userProfile.employer_reputation.entire_history.reviews : "No Reviews";
     if (minReviewAmount != 100000000 && maxReviewAmount != 0) {
         if (minReviewAmount === maxReviewAmount) {
@@ -83,7 +83,8 @@ export const getNecessaryInfosByUserId = async (userId: number) => {
         linkedin_connected: userProfile.status.linkedin_connected,
         payment_verified: userProfile.status.payment_verified,
         phone_verified: userProfile.status.phone_verified,
-        profile_complete: userProfile.status.profile_complete
+        profile_complete: userProfile.status.profile_complete,
+        isNewClient: false
     }
 }
 

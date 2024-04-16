@@ -56,7 +56,7 @@ function createMyNotification(options) {
 
     const notification = createNotification({
         content: `
-  <div class="notification animate__animated animate__fadeInRight">
+  <div class="notification animate__animated animate__fadeInRight ${options.isNewClient ? 'new-client' : ''}">
     <div class="person-info">
         <div class="photo-wrapper flex-center">
             <img src="${options.avatar}">

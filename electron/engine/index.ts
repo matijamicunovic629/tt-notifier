@@ -6,6 +6,31 @@ import notification from "../notification/Notification";
 
 let sock: any = null;
 
+const checkNewClientProject = (notificationOption) => {
+
+    if (notificationOption.country === 'India' ||
+        notificationOption.country === 'Pakistan' ||
+        notificationOption.country === 'Bangladesh')
+        return false;
+
+    if (notificationOption.projectType === 'hourly' &&
+        notificationOption.maxBudget > 0 &&
+        notificationOption.maxBudget < 15)
+        return false;
+
+
+    if (notificationOption.projectType === 'fixed' &&
+        notificationOption.minBudget < 250)
+        return false;
+
+    // registrationDate > 1000
+    if (Date.now() - notificationOption.registrationDate.getTime() > 864000000)
+        return false;
+
+    notificationOption.isNewClient = true;
+    return true;
+}
+
 const checkProject = (notificationOption) => {
 
     // country filter
@@ -15,8 +40,8 @@ const checkProject = (notificationOption) => {
         return false;
 
     // verified filter
-    if (!notificationOption.payment_verified ||
-        !notificationOption.deposit_made)
+    if (!notificationOption.payment_verified /*||
+        !notificationOption.deposit_made*/)
         return false;
 
     // price filter
@@ -57,7 +82,7 @@ const handleProject = async (projectData) => {
     };
     console.log(notificationOption)
     console.log("__________________________")
-    if (checkProject(notificationOption)) {
+    if (checkProject(notificationOption) || checkNewClientProject(notificationOption)) {
         createMyNotification(notificationOption);
     }
 }
@@ -82,6 +107,11 @@ const initSockJS = () => {
 
     sock.onclose = (e) => {
         console.log("socket onClose", e);
+
+        setTimeout(() => {
+            console.log("Attempting to reconnect...");
+            initSockJS();
+        }, 2000);
     };
 
     sock.onmessage = (e) => {
