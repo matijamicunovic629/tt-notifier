@@ -39,9 +39,15 @@ const checkProject = (notificationOption) => {
         notificationOption.country === 'Bangladesh')
         return false;
 
+    if (notificationOption.isFreelancer)
+        return true;
+
+    return false;
+
+/*
     // verified filter
-    if (!notificationOption.payment_verified /*||
-        !notificationOption.deposit_made*/)
+    if (!notificationOption.payment_verified /!*||
+        !notificationOption.deposit_made*!/)
         return false;
 
     // price filter
@@ -66,6 +72,7 @@ const checkProject = (notificationOption) => {
     // check review
     if (notificationOption.isPoorClient)
         return false;
+*/
 
     return true;
 }
@@ -82,7 +89,7 @@ const handleProject = async (projectData) => {
     };
     console.log(notificationOption)
     console.log("__________________________")
-    if (checkProject(notificationOption) || checkNewClientProject(notificationOption)) {
+    if (checkProject(notificationOption)/* || checkNewClientProject(notificationOption)*/) {
         createMyNotification(notificationOption);
     }
 }

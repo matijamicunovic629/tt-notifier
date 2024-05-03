@@ -131,7 +131,7 @@ function createMyNotification(options) {
             </div>
         </div>
         <div class="flex-center">
-            <span class="my-button" onclick="copy2clipboard__(event, '${sharpValue}')">#</span>
+            <span class="my-button" onclick="copy2clipboard__(event, options.userId)">#</span>
         </div>
     </div>
   </div>

@@ -64,6 +64,7 @@ export const getNecessaryInfosByUserId = async (userId: number) => {
     return {
         userId,
         isPoorClient,
+        isFreelancer: userProfile.jobs && userProfile.jobs.length > 0,
         avatar: 'https:' + userProfile.avatar_cdn,
         city: userProfile.location.city,
         flag_url: 'https:' + userProfile.location.country.flag_url_cdn,

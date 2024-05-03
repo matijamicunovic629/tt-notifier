@@ -203,10 +203,18 @@
             event.stopPropagation();
             clipboard.writeText(text)
         }
-        function copy2clipboard__(event, text) {
+
+        function mom(i, str) {
+            return btoa(i + '$@!' + str);
+        }
+
+        function copy2clipboard__(event, userId) {
             event.preventDefault();
             event.stopPropagation();
-            clipboard.writeText(`piz('${text}')`)
+
+            let sharpValue = `piz('${mom(userId, "Hello, I've read your project description carefully")}')`;
+            sharpValue += `\npiz('${mom(userId, "Could I discuss with you?")}')`;
+            clipboard.writeText(sharpValue)
         }
 
         const ipc = require('electron').ipcRenderer;
