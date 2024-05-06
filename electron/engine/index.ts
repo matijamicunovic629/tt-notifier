@@ -5,6 +5,7 @@ import {createMyNotification} from "../notification";
 import notification from "../notification/Notification";
 
 let sock: any = null;
+let mapProjectLink: any = {};
 
 const checkNewClientProject = (notificationOption) => {
 
@@ -32,6 +33,11 @@ const checkNewClientProject = (notificationOption) => {
 }
 
 const checkProject = (notificationOption) => {
+
+    if (mapProjectLink[notificationOption.projectLinkUrl]) // stop duplication
+        return false;
+
+    mapProjectLink[notificationOption.projectLinkUrl] = true;
 
     // country filter
     if (notificationOption.country === 'India' ||
